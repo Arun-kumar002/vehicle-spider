@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const {simcreateController,deviceCreateController,vehicleCreateController,getVechicle,postSearch}=require('../controller/vehicleController')
+const {protected,deviceprotected}=require('../helpers/authProtector')
+router.post('/sim',simcreateController)
+router.post('/device',protected,deviceCreateController)
+router.post('/vehicle',deviceprotected,vehicleCreateController)
+router.get('/getVechicle',deviceprotected,getVechicle)
+router.post('/search',postSearch)
+module.exports=router
